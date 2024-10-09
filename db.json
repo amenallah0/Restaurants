@@ -1,0 +1,159 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Le Pirate",
+      "cuisine": "Seafood",
+      "rating": 4.5,
+      "image": "pirate.jpg",
+      "workingHours": "12:00 PM - 10:00 PM",
+      "address": "Marina, Monastir 5000, Tunisia",
+      "phone": "+216 73 462 610",
+      "description": "Enjoy fresh seafood with a beautiful view of the marina.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Grilled Sea Bass",
+          "price": 25.99,
+          "description": "Fresh sea bass grilled to perfection, served with lemon butter sauce"
+        },
+        {
+          "id": 2,
+          "name": "Seafood Paella",
+          "price": 29.99,
+          "description": "Traditional Spanish rice dish with a variety of seafood"
+        },
+        {
+          "id": 3,
+          "name": "Lobster Thermidor",
+          "price": 39.99,
+          "description": "Lobster meat in a rich, creamy sauce, served in its shell"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "La Parenthèse",
+      "cuisine": "French",
+      "rating": 4.2,
+      "image": "paranthese.jpg",
+      "workingHours": "11:30 AM - 11:00 PM",
+      "address": "Avenue Habib Bourguiba, Monastir 5000, Tunisia",
+      "phone": "+216 73 461 280",
+      "description": "Experience authentic French cuisine in the heart of Monastir.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Coq au Vin",
+          "price": 24.99,
+          "description": "Classic French dish of chicken braised with wine, bacon, and mushrooms"
+        },
+        {
+          "id": 2,
+          "name": "Beef Bourguignon",
+          "price": 27.99,
+          "description": "Tender beef stewed in red wine with carrots and pearl onions"
+        },
+        {
+          "id": 3,
+          "name": "Crème Brûlée",
+          "price": 9.99,
+          "description": "Traditional French dessert with a caramelized sugar crust"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dar Chraka",
+      "cuisine": "Tunisian",
+      "rating": 4.7,
+      "image": "chraka.jpg",
+      "workingHours": "1:00 PM - 9:00 PM",
+      "address": "Medina of Monastir, Monastir 5000, Tunisia",
+      "phone": "+216 73 463 520",
+      "description": "Traditional Tunisian dishes served in a charming historic setting.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Couscous Royale",
+          "price": 22.99,
+          "description": "Traditional Tunisian couscous with lamb, chicken, and merguez sausage"
+        },
+        {
+          "id": 2,
+          "name": "Brik à l'Oeuf",
+          "price": 8.99,
+          "description": "Crispy pastry filled with egg, tuna, and parsley"
+        },
+        {
+          "id": 3,
+          "name": "Ojja",
+          "price": 12.99,
+          "description": "Spicy tomato and egg dish with merguez sausage"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Le Chandelier",
+      "cuisine": "Mediterranean",
+      "rating": 4.3,
+      "image": "chandelier.jpg",
+      "workingHours": "7:00 PM - 11:00 PM",
+      "address": "Corniche, Monastir 5000, Tunisia",
+      "phone": "+216 73 466 100",
+      "description": "Elegant dining with a mix of Mediterranean flavors and stunning sea views.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Greek Salad",
+          "price": 10.99,
+          "description": "Fresh salad with tomatoes, cucumbers, olives, and feta cheese"
+        },
+        {
+          "id": 2,
+          "name": "Grilled Octopus",
+          "price": 26.99,
+          "description": "Tender octopus grilled with olive oil, lemon, and herbs"
+        },
+        {
+          "id": 3,
+          "name": "Moussaka",
+          "price": 19.99,
+          "description": "Traditional Greek dish with layers of eggplant, ground meat, and béchamel sauce"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "La Badira",
+      "cuisine": "International",
+      "rating": 4.6,
+      "image": "badira.jpg",
+      "workingHours": "12:00 PM - 11:00 PM",
+      "address": "Zone Touristique, Monastir 5000, Tunisia",
+      "phone": "+216 73 465 890",
+      "description": "Upscale restaurant offering a diverse menu of international cuisines.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Sushi Platter",
+          "price": 32.99,
+          "description": "Assorted sushi and sashimi platter with wasabi and pickled ginger"
+        },
+        {
+          "id": 2,
+          "name": "Beef Tenderloin",
+          "price": 34.99,
+          "description": "Grilled beef tenderloin with truffle mashed potatoes and seasonal vegetables"
+        },
+        {
+          "id": 3,
+          "name": "Tiramisu",
+          "price": 11.99,
+          "description": "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream"
+        }
+      ]
+    }
+  ]
+}
