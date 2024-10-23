@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native';
 import { colors } from '../styles/colors';
 import { Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import Toast from 'react-native-toast-message';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const CartScreen = ({ route, navigation }) => {
   const { cartItems, setCartItems } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [reservationTime, setReservationTime] = useState('');
   const [numberOfPeople, setNumberOfPeople] = useState('');
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
 
   const removeFromCart = (itemToRemove) => {
     const updatedCart = cartItems.filter(item => item.id !== itemToRemove.id);
@@ -27,21 +30,7 @@ const CartScreen = ({ route, navigation }) => {
   };
 
   const handleCheckout = () => {
-    Alert.alert(
-      'Confirm Checkout',
-      'Are you sure you want to proceed to checkout?',
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        },
-        {
-          text: 'OK',
-          onPress: () => setModalVisible(true),
-        },
-      ],
-      { cancelable: false }
-    );
+    setConfirmationVisible(true);
   };
 
   const handleReservationSubmit = () => {
@@ -51,6 +40,10 @@ const CartScreen = ({ route, navigation }) => {
       text1: 'Reservation Confirmed',
       text2: `Time: ${reservationTime}, People: ${numberOfPeople}`,
       position: 'bottom',
+    });
+    navigation.navigate('ReservationScreen', {
+      reservationTime,
+      numberOfPeople,
     });
   };
 
@@ -63,6 +56,19 @@ const CartScreen = ({ route, navigation }) => {
       </TouchableOpacity>
     </Animatable.View>
   );
+
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+  const handleConfirm = (time) => {
+    setReservationTime(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    hideTimePicker();
+  };
 
   return (
     <View style={styles.container}>
@@ -87,17 +93,47 @@ const CartScreen = ({ route, navigation }) => {
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
+        visible={confirmationVisible}
+        onRequestClose={() => setConfirmationVisible(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>Confirm Checkout</Text>
+            <Text style={styles.modalText}>Are you sure you want to proceed to checkout?</Text>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.modalButton} onPress={() => setConfirmationVisible(false)}>
+                <Text style={styles.modalButtonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalButton} onPress={() => { setConfirmationVisible(false); setModalVisible(true); }}>
+                <Text style={styles.modalButtonText}>OK</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+                <View style={styles.modalContainer}>
+          <View style={styles.modalView}>
             <Text style={styles.modalTitle}>Enter Reservation Details</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Reservation Time"
-              value={reservationTime}
-              onChangeText={setReservationTime}
+            <TouchableOpacity onPress={showTimePicker}>
+              <TextInput
+                style={styles.input}
+                placeholder="Reservation Time"
+                value={reservationTime}
+                editable={false} // Make the TextInput non-editable
+              />
+            </TouchableOpacity>
+            <DateTimePickerModal
+              isVisible={isTimePickerVisible}
+              mode="time"
+              onConfirm={handleConfirm}
+              onCancel={hideTimePicker}
             />
             <TextInput
               style={styles.input}
@@ -117,6 +153,7 @@ const CartScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: colors.background,
@@ -213,10 +250,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalView: {
-    width: '80%',
+    width: '85%',
     backgroundColor: colors.white,
-    borderRadius: 8,
-    padding: 20,
+    borderRadius: 20,
+    padding: 25,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -225,30 +262,43 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   modalTitle: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 15,
+    marginBottom: 20,
     color: colors.primary,
+  },
+  modalText: {
+    fontSize: 16,
+    color: colors.text,
+    marginBottom: 20,
+    textAlign: 'center',
   },
   input: {
     width: '100%',
-    height: 40,
+    height: 45,
     borderColor: colors.border,
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 15,
-    paddingHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 20,
+    paddingHorizontal: 15,
   },
   modalButton: {
     backgroundColor: colors.primary,
-    padding: 10,
-    borderRadius: 5,
+    padding: 12,
+    borderRadius: 10,
     alignItems: 'center',
-    width: '100%',
+    width: '45%',
+    margin: 5,
   },
   modalButtonText: {
     color: colors.white,
     fontWeight: 'bold',
+    fontSize: 16,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
 

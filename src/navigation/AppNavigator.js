@@ -8,8 +8,6 @@ import RestaurantMenuScreen from '../screens/RestaurantMenuScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import CartScreen from '../screens/CartScreen';
-import OnboardingScreen from '../screens/OnboardingScreen';
-import HomePage from '../screens/HomePageScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,9 +15,7 @@ const AppNavigator = () => {
   const { userToken } = useAuth();
 
   return (
-    <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="HomePage" component={HomePage} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {userToken ? (
         <>
           <Stack.Screen name="Main" component={BottomTabNavigator} />
