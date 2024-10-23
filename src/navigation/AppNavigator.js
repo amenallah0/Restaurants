@@ -4,6 +4,12 @@ import { useAuth } from '../context/AuthContext';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import BottomTabNavigator from './BottomTabNavigator';
+import RestaurantMenuScreen from '../screens/RestaurantMenuScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
+import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import CartScreen from '../screens/CartScreen';
+import OnboardingScreen from '../screens/OnboardingScreen';
+import HomePage from '../screens/HomePageScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,9 +17,17 @@ const AppNavigator = () => {
   const { userToken } = useAuth();
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="HomePage" component={HomePage} />
       {userToken ? (
-        <Stack.Screen name="Main" component={BottomTabNavigator} />
+        <>
+          <Stack.Screen name="Main" component={BottomTabNavigator} />
+          <Stack.Screen name="RestaurantMenuScreen" component={RestaurantMenuScreen} />
+          <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+          <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+          <Stack.Screen name="CartScreen" component={CartScreen} />
+        </>
       ) : (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />

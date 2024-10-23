@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../styles/colors';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
+import { Card } from 'react-native-elements';
 
 const ChangePasswordScreen = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -38,30 +39,34 @@ const ChangePasswordScreen = () => {
         <Text style={styles.headerTitle}>Change Password</Text>
         <View style={styles.backButton} />
       </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Current Password"
-        value={currentPassword}
-        onChangeText={setCurrentPassword}
-        secureTextEntry
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="New Password"
-        value={newPassword}
-        onChangeText={setNewPassword}
-        secureTextEntry
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm New Password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        secureTextEntry
-      />
-      <TouchableOpacity style={styles.saveButton} onPress={handleChangePassword}>
-        <Text style={styles.saveButtonText}>Change Password</Text>
-      </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <View style={styles.formContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Current Password"
+            value={currentPassword}
+            onChangeText={setCurrentPassword}
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="New Password"
+            value={newPassword}
+            onChangeText={setNewPassword}
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm New Password"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            secureTextEntry
+          />
+          <TouchableOpacity style={styles.saveButton} onPress={handleChangePassword}>
+            <Text style={styles.saveButtonText}>Change Password</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -70,13 +75,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    padding: 20,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    padding: 20,
   },
   headerTitle: {
     fontSize: 20,
@@ -87,10 +91,17 @@ const styles = StyleSheet.create({
     padding: 8,
     width: 40,
   },
+  scrollViewContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  formContainer: {
+    padding: 20,
+  },
   input: {
     backgroundColor: colors.white,
     borderRadius: 5,
-    padding: 10,
+    padding: 15,
     marginBottom: 15,
   },
   saveButton: {
@@ -98,10 +109,12 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
+    marginTop: 10,
   },
   saveButtonText: {
     color: colors.white,
     fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

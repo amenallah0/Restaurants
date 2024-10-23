@@ -5,10 +5,8 @@ import { colors } from '../styles/colors';
 import { useAuth } from '../context/AuthContext';
 import { Ionicons } from '@expo/vector-icons';
 import Input from '../components/Input';
-import RestaurantMenuScreen from '../screens/RestaurantMenuScreen';
+import restaurantData from "../../db.json";
 
-
-const API_URL = 'http://192.168.100.37:3000/restaurants';  // For Android emulator
 
 const HomePage = ({ navigation }) => {
   const [restaurants, setRestaurants] = useState([]);
@@ -21,16 +19,11 @@ const HomePage = ({ navigation }) => {
 
   const fetchRestaurants = async () => {
     try {
-      console.log('Fetching restaurants from:', API_URL);
-      const response = await fetch(API_URL);
-      console.log('Response status:', response.status);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log('Fetched restaurants:', data);
-      setRestaurants(data);
-      setFilteredRestaurants(data);
+      console.log('Fetching restaurants from local JSON file');
+      await new Promise(resolve => setTimeout(resolve, 10000));
+      console.log('Fetched restaurants:', restaurantData.restaurants);
+      setRestaurants(restaurantData.restaurants);
+      setFilteredRestaurants(restaurantData.restaurants);
       setError(null);
     } catch (error) {
       console.error('Error fetching restaurants:', error.message);
@@ -134,17 +127,7 @@ const HomePage = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        {navigation.canGoBack() ? (
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <Ionicons name="arrow-back" size={24} color={colors.primary} />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.backButton} />
-        )}
         <Text style={styles.headerTitle}>Restaurants</Text>
-        <TouchableOpacity onPress={signOut} style={styles.logoutButton}>
-          <Text style={styles.logoutButtonText}>Logout</Text>
-        </TouchableOpacity>
       </View>
       <Input
         placeholder="Search restaurants or cuisines"
@@ -180,7 +163,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
   },
@@ -193,7 +176,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   logoutButtonText: {
-    color: colors.primary,
+    color: colors.secondary,
     fontWeight: 'bold',
   },
   listContainer: {
@@ -210,6 +193,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    borderColor: colors.border,
+    borderWidth: 1,
   },
   restaurantImage: {
     width: 80,
@@ -223,12 +208,12 @@ const styles = StyleSheet.create({
   restaurantName: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: colors.text,
+    color: colors.secondary,
     marginBottom: 4,
   },
   restaurantCuisine: {
     fontSize: 14,
-    color: colors.secondary,
+    color: colors.primary,
     marginBottom: 4,
   },
   ratingContainer: {
@@ -239,15 +224,15 @@ const styles = StyleSheet.create({
   ratingText: {
     marginLeft: 4,
     fontSize: 14,
-    color: colors.text,
+    color: colors.secondary,
   },
   workingHours: {
     fontSize: 12,
-    color: colors.secondary,
+    color: colors.text,
   },
   address: {
     fontSize: 12,
-    color: colors.secondary,
+    color: colors.text,
     marginTop: 4,
   },
   errorText: {

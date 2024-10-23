@@ -6,6 +6,7 @@ export const AppTheme = {
   colors: {
     ...DefaultTheme.colors,
     primary: colors.primary,
+    secondary: colors.secondary,
     background: colors.background,
     card: colors.white,
     text: colors.text,

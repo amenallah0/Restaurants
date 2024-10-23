@@ -154,6 +154,99 @@
           "description": "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream"
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "Restaurant Du Cap Marina",
+      "cuisine": "Mediterranean",
+      "rating": 4.4,
+      "image": "pirate.jpg",
+      "workingHours": "11:30 AM - 10:30 PM",
+      "address": "Port Marina, Monastir 5000, Tunisia",
+      "phone": "+216 73 467 700",
+      "description": "Relax and dine with beautiful views of the marina, offering fresh Mediterranean cuisine.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Fried Calamari",
+          "price": 15.99,
+          "description": "Crispy fried calamari served with lemon and aioli"
+        },
+        {
+          "id": 2,
+          "name": "Tuna Steak",
+          "price": 24.99,
+          "description": "Fresh grilled tuna steak served with a tangy citrus sauce"
+        },
+        {
+          "id": 3,
+          "name": "Chocolate Fondant",
+          "price": 7.99,
+          "description": "Warm chocolate cake with a molten center, served with vanilla ice cream"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "The Cliff",
+      "cuisine": "International",
+      "rating": 4.5,
+      "image": "pirate.jpg",
+      "workingHours": "12:00 PM - 11:00 PM",
+      "address": "Cliff Road, Monastir 5000, Tunisia",
+      "phone": "+216 73 468 920",
+      "description": "A trendy restaurant with a stunning cliff-side view, offering a mix of international dishes.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Grilled Ribeye",
+          "price": 28.99,
+          "description": "Juicy grilled ribeye steak with herb butter and a side of fries"
+        },
+        {
+          "id": 2,
+          "name": "Prawn Linguine",
+          "price": 23.99,
+          "description": "Linguine pasta with prawns, garlic, and chili in a white wine sauce"
+        },
+        {
+          "id": 3,
+          "name": "Cheesecake",
+          "price": 9.99,
+          "description": "Creamy New York-style cheesecake with a strawberry sauce"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "El Mandra",
+      "cuisine": "Tunisian",
+      "rating": 4.6,
+      "image": "pirate.jpg",
+      "workingHours": "12:30 PM - 9:30 PM",
+      "address": "Boulevard de l'Environnement, Monastir 5000, Tunisia",
+      "phone": "+216 73 464 555",
+      "description": "A family-run restaurant serving traditional Tunisian dishes with local ingredients.",
+      "menu": [
+        {
+          "id": 1,
+          "name": "Lablabi",
+          "price": 6.99,
+          "description": "Hearty Tunisian chickpea soup with garlic, cumin, and olive oil"
+        },
+        {
+          "id": 2,
+          "name": "Grilled Lamb Chops",
+          "price": 19.99,
+          "description": "Succulent lamb chops grilled with rosemary and served with a side of couscous"
+        },
+        {
+          "id": 3,
+          "name": "Baklava",
+          "price": 4.99,
+          "description": "Sweet pastry layers with honey and pistachios"
+        }
+      ]
     }
   ]
 }

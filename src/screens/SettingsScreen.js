@@ -62,8 +62,14 @@ const SettingsScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color={colors.primary} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Settings</Text>
+        <View style={styles.backButton} />
+      </View>
       <ScrollView>
-        <Text style={styles.sectionTitle}>Preferences</Text>
         {renderSettingItem('notifications', 'Push Notifications', notifications, toggleNotifications)}
         {renderSettingItem('moon', 'Dark Mode', darkMode, toggleDarkMode)}
         
@@ -96,6 +102,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.primary,
   },
   sectionTitle: {
     fontSize: 18,
@@ -133,6 +144,23 @@ const styles = StyleSheet.create({
     color: colors.error,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.primary,
+  },
+  backButton: {
+    padding: 8,
+    width: 40,
   },
 });
 
