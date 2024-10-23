@@ -10,6 +10,7 @@ import { colors } from '../styles/colors';
 import { useAuth } from '../context/AuthContext';
 
 const RegisterScreen = ({ navigation }) => {
+  const [username, setUsername] = useState(''); // Add state for username
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -25,6 +26,11 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   const handleRegister = async () => {
+    if (!username) {
+      showModal('Invalid Username', 'Please enter a username.');
+      return;
+    }
+
     if (!validateEmail(email)) {
       showModal('Invalid Email', 'Please enter a valid email address.');
       return;
@@ -42,7 +48,7 @@ const RegisterScreen = ({ navigation }) => {
 
     setIsLoading(true);
     try {
-      await signUp(email, password);
+      await signUp(email, password, username); // Pass username if needed
       showModal('Success', 'Registration successful. Please log in.', () => navigation.navigate('Login'));
     } catch (error) {
       showModal('Registration Failed', error.message);
@@ -59,6 +65,12 @@ const RegisterScreen = ({ navigation }) => {
       >
         <Logo />
         <Text style={styles.title}>Create Account</Text>
+        <Input
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+          icon="person"
+        />
         <Input
           placeholder="Email"
           value={email}

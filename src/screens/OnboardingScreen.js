@@ -5,7 +5,7 @@ import { colors } from '../styles/colors';
 
 const OnboardingScreen = ({ navigation }) => {
   const handleFinish = () => {
-    navigation.replace('HomePage');
+    navigation.replace('Login');
   };
 
   return (

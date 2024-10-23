@@ -37,9 +37,9 @@ const ProfileScreen = () => {
         </View>
         
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{user?.name || 'N/A'}</Text>
+          <Text style={styles.name}>{user?.username || 'N/A'}</Text>
           <Text style={styles.email}>{user?.email || 'N/A'}</Text>
-          <Text style={styles.phone}>{user?.phone || 'N/A'}</Text>
+          {/* <Text style={styles.phone}>{user?.phone || 'N/A'}</Text> */}
         </View>
         
         <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
