@@ -11,29 +11,24 @@ const OnboardingScreen = ({ navigation }) => {
   return (
     <Swiper loop={false} showsPagination={true}>
       <View style={styles.slide}>
-        <Image source={require('../../assets/icon.png')} style={styles.image} />
+        <Image source={require('../../assets/step1.png')} style={styles.image} />
         <Text style={styles.title}>Welcome to the App</Text>
-        <Text style={styles.text}>Step 1: Introduction</Text>
       </View>
       <View style={styles.slide}>
-        <Image source={require('../../assets/icon.png')} style={styles.image} />
+        <Image source={require('../../assets/step2.png')} style={styles.image} />
         <Text style={styles.title}>Create an Account</Text>
-        <Text style={styles.text}>Step 2: Sign Up</Text>
       </View>
       <View style={styles.slide}>
-        <Image source={require('../../assets/icon.png')} style={styles.image} />
+        <Image source={require('../../assets/step3.png')} style={styles.image} />
         <Text style={styles.title}>Verify Your Email</Text>
-        <Text style={styles.text}>Step 3: Verification</Text>
       </View>
       <View style={styles.slide}>
-        <Image source={require('../../assets/icon.png')} style={styles.image} />
+        <Image source={require('../../assets/step4.jpeg')} style={styles.image} />
         <Text style={styles.title}>Set Up Your Profile</Text>
-        <Text style={styles.text}>Step 4: Profile Setup</Text>
       </View>
       <View style={styles.slide}>
-        <Image source={require('../../assets/icon.png')} style={styles.image} />
+        <Image source={require('../../assets/step5.png')} style={styles.image} />
         <Text style={styles.title}>Get Started</Text>
-        <Text style={styles.text}>Step 5: Final Steps</Text>
         <TouchableOpacity style={styles.button} onPress={handleFinish}>
           <Text style={styles.buttonText}>Finish</Text>
         </TouchableOpacity>

@@ -4,7 +4,7 @@ import { Image, StyleSheet } from 'react-native';
 const Logo = () => {
   return (
     <Image
-    source={require('../../assets/favicon.png')}
+    source={require('../../assets/welcome.png')}
     style={styles.logo}
     />
   );
@@ -12,7 +12,7 @@ const Logo = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    width: 150,
+    width: 250,
     height: 150,
     resizeMode: 'contain',
     marginBottom: 20,

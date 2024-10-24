@@ -27,6 +27,7 @@ const EditProfileScreen = () => {
       alert('Profile updated successfully');
       navigation.goBack();
     } catch (error) {
+      console.error('Failed to update profile:', error);
       alert('Failed to update profile');
     }
   };
